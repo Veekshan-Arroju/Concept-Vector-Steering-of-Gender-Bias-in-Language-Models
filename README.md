@@ -2,7 +2,7 @@
 
 **A controlled evaluation against random-direction nulls**
 
-M.Tech dissertation · Indian Institute of Technology Jodhpur · School of Artificial Intelligence & Data Science
+M.Tech dissertation | Indian Institute of Technology Jodhpur | School of Artificial Intelligence & Data Science
 
 This repository implements the concept-vector method of Beaglehole et al., [*Toward universal steering and monitoring of AI models*](https://arxiv.org/abs/2502.03708), for the concept of **misogyny** in **Llama-3.1-8B-Instruct**. It adds an evaluation the original work does not include: every learned direction is compared with random directions of the same norm, on matched sentence stems about women and about men, with two independent LLM judges and a pass/fail rule written down before the relevant data were generated.
 
