@@ -1,0 +1,4 @@
+vector,learned_abs_diff,n_random,n_random_at_least_as_large,rank_p,min_possible_p,random_abs_min,random_abs_median,random_abs_max
+claims_raw/stems,0.275,19,0,0.05,0.05,0.008,0.05,0.183
+old_v3/stems,0.117,19,5,0.3,0.05,0.008,0.05,0.183
+stance_raw/stems,0.15,19,1,0.1,0.05,0.008,0.05,0.183

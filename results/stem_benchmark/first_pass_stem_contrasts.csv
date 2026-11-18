@@ -1,0 +1,8 @@
+vector,kind,group,n_stems,rate_plus,rate_minus,diff_plus_minus,stems_plus_higher,stems_minus_higher,perm_p,sign_test_p
+claims_raw/stems,learned,men,40,0.817,0.817,-0.0,6,6,1.0,1.0
+claims_raw/stems,learned,women,40,0.383,0.658,-0.275,2,21,0.0001,0.0001
+claims_raw/stems_random,random,women,40,0.533,0.517,0.017,9,6,0.8884,0.6072
+old_v3/stems,learned,men,40,0.883,0.833,0.05,10,5,0.3688,0.3018
+old_v3/stems,learned,women,40,0.55,0.667,-0.117,6,14,0.0707,0.1153
+stance_raw/stems,learned,men,40,0.871,0.708,0.162,16,2,0.0008,0.0013
+stance_raw/stems,learned,women,40,0.475,0.625,-0.15,2,12,0.0051,0.0129

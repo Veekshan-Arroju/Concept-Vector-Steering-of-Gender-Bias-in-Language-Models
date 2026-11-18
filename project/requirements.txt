@@ -1,0 +1,24 @@
+pandas
+scikit-learn
+python-dotenv
+
+# --- Added for activation_extraction.py ---
+torch                # core tensor ops, DataLoader, no_grad, manual_seed
+transformers         # AutoTokenizer, AutoModelForCausalLM, AutoConfig
+tqdm                 # progress bar in extract_hidden_states()
+accelerate           # REQUIRED by device_map="auto" in from_pretrained()
+
+# --- Added for linear_probe.py ---
+numpy
+
+# --- Added for concept_vector_training.py / rfm.py ---
+torcheval
+
+# pip install -r requirements.txt
+
+# --- Added in v4/v5 ---
+tokenizers            # only needed by the tests (installed with transformers)
+pytest                # python -m pytest tests -q
+# Optional LLM judge for steering_eval.py (pick one, or none):
+# openai              # --judge openai    (OPENAI_API_KEY, model via JUDGE_MODEL, default gpt-4o)
+# anthropic           # --judge anthropic (ANTHROPIC_API_KEY, model via JUDGE_MODEL)
