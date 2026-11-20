@@ -1,4 +1,4 @@
-# Concept-Vector Steering of Gender Bias in Language Models: A controlled evaluation against random-direction nulls
+# Concept-Vector Steering of Gender Bias in Language Models: A Controlled Evaluation Against Random-Direction Nulls
 
 **M.Tech dissertation | Indian Institute of Technology Jodhpur | School of Artificial Intelligence & Data Science**
 
