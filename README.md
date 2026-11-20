@@ -315,6 +315,11 @@ If you use this work, please cite the dissertation and the paper it builds on:
   year   = {2026}
 }
 
+
+## Licence
+
+Code released under the MIT licence.
+
 @article{beaglehole2025universal,
   author  = {Beaglehole, Daniel and Radhakrishnan, Adityanarayanan and
              Boix-Adser{\`a}, Enric and Belkin, Mikhail},
