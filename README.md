@@ -1,8 +1,6 @@
-# Concept-Vector Steering of Gender Bias in Language Models
+# Concept-Vector Steering of Gender Bias in Language Models: A Controlled Evaluation Against Random-Direction Nulls
 
-**A controlled evaluation against random-direction nulls**
-
-M.Tech dissertation | Indian Institute of Technology Jodhpur | School of Artificial Intelligence & Data Science
+**M.Tech dissertation | Indian Institute of Technology Jodhpur | School of Artificial Intelligence & Data Science**
 
 This repository implements the concept-vector method of Beaglehole et al., [*Toward universal steering and monitoring of AI models*](https://arxiv.org/abs/2502.03708), for the concept of **misogyny** in **Llama-3.1-8B-Instruct**. It adds an evaluation the original work does not include: every learned direction is compared with random directions of the same norm, on matched sentence stems about women and about men, with two independent LLM judges and a pass/fail rule written down before the relevant data were generated.
 
@@ -134,10 +132,10 @@ The variants differ in the negative class, the read position and the kind of con
 
 | Piece | Design |
 |---|---|
-| Prompts | 80 stems: 40 women, and the same 40 about men (stem *i* and stem *i* + 40 are a matched pair), in `src/evaluation_prompts/en/stem_benchmark_prompts.txt` |
+| Prompts | 80 stems: 40 women, and the same 40 about men (stem *i* and stem *i* + 40 are a matched pair), in `project/evaluation_prompts/en/stem_benchmark_prompts.txt` |
 | Strengths | ε = ±0.4, ±0.6, ±0.8 for the test; ±0.2 as a near-baseline reference |
 | Generation | Llama-3.1-8B-Instruct, fp16, greedy, 80 new tokens, one answer per stem × strength × sign |
-| Judges | Claude Sonnet (main) and Claude Haiku (second). Stereotype judge: `stereotype`, `demeaning`, `coherent` (a stereotype is a generalisation about a group's traits, abilities, preferences or roles stated as fact, benevolent ones included). Misogyny judge: `misogynistic`, `coherent`, `refusal_or_hedge` (`src/evaluation_prompts/misogyny_judge_rubric.txt`) |
+| Judges | Claude Sonnet (main) and Claude Haiku (second). Stereotype judge: `stereotype`, `demeaning`, `coherent` (a stereotype is a generalisation about a group's traits, abilities, preferences or roles stated as fact, benevolent ones included). Misogyny judge: `misogynistic`, `coherent`, `refusal_or_hedge` (`project/evaluation_prompts/misogyny_judge_rubric.txt`) |
 | Unit of analysis | The stem. For each stem the stereotype-and-coherent rate over the three steered strengths is taken per sign; the three strengths of one stem are not treated as independent trials |
 | Tests | Sign-flip permutation test on the mean paired difference (primary, seed 12345), exact sign test (secondary), 95% Wilson intervals |
 | Null | 19 random unit directions (seeds 0 to 18) on the women stems; rank p = (1 + k) / (1 + N) with k random directions at least as large and N = 19 |
@@ -163,7 +161,7 @@ Other tools in the code base: a True/False logit probe (`stance_logit_test.py`, 
 ```
 .
 ├── README.md
-├── src/                         code, prompts, language packs and tests
+├── project/                     code, prompts, language packs and tests
 │   ├── requirements.txt
 │   ├── .env.example
 │   ├── evaluation_prompts/      stem benchmark, opinion probes, misogyny-judge rubric
@@ -182,7 +180,7 @@ Other tools in the code base: a True/False logit probe (`stance_logit_test.py`, 
 
 Model weights, activations, vectors, environments, caches, logs and real `.env` files are not included.
 
-### Code by role (`src/`)
+### Code by role (`project/`)
 
 | Role | Scripts |
 |---|---|
@@ -201,15 +199,15 @@ Model weights, activations, vectors, environments, caches, logs and real `.env` 
 Developed with Python 3.13. All generated artefacts are written under the working directory, namespaced by model and experiment (`dataset/`, `activations/`, `concept_vectors/`, `results/<model>/<experiment>/`).
 
 ```bash
-git clone https://github.com/<your-username>/Concept-Vector-Steering-of-Gender-Bias-in-Language-Models.git
-cd Concept-Vector-Steering-of-Gender-Bias-in-Language-Models/src
+git clone https://github.com/Veekshan-Arroju/Concept-Vector-Steering-of-Gender-Bias-in-Language-Models.git
+cd Concept-Vector-Steering-of-Gender-Bias-in-Language-Models/project
 pip install -r requirements.txt
 pip install anthropic openai        # judging and the full test suite
 ```
 
 ### 1. Recompute the tables (no GPU, no API key, seconds)
 
-Every generated answer and every judge verdict is in `results/`, so the reported statistics can be recomputed on a laptop. From `src/`:
+Every generated answer and every judge verdict is in `results/`, so the reported statistics can be recomputed on a laptop. From `project/`:
 
 ```bash
 python stereotype_eval.py --from-judged --out /tmp/out ../results/stem_benchmark/judged_sonnet/*.csv
@@ -287,7 +285,7 @@ The scripts for monitoring, specificity and probes are documented in their docst
 ### 3. Tests
 
 ```bash
-cd src
+cd project
 python -m pytest tests/test_dataset.py tests/test_judge.py tests/test_stance_and_calibration.py \
     tests/test_raw_read.py tests/test_stance_wide.py tests/test_judge_csv.py \
     tests/test_claims_dataset.py tests/test_stem_benchmark.py -q
@@ -297,7 +295,7 @@ python -m pytest tests/test_dataset.py tests/test_judge.py tests/test_stance_and
 
 ### Other models and languages
 
-The loader reads the architecture from the model (`--model-id`, `--dtype`, `--trust-remote-code`), and language packs live in `src/data/languages/<code>/` (`python dataset_builder.py --init-language <code>` copies the English pack). Neither has been used for a reported result.
+The loader reads the architecture from the model (`--model-id`, `--dtype`, `--trust-remote-code`), and language packs live in `project/data/languages/<code>/` (`python dataset_builder.py --init-language <code>` copies the English pack). Neither has been used for a reported result.
 
 ## Responsible use
 
